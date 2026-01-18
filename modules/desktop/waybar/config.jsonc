@@ -1,0 +1,153 @@
+[
+  {
+    "layer": "top",
+    "height": 34,
+    "modules-left": [
+      "custom/icon",
+      "hyprland/workspaces"
+      // "hyprland/window"
+    ],
+    "modules-center": [
+      "clock",
+      "custom/swaync"
+    ],
+    "modules-right": [
+      "tray",
+      "network",
+      "bluetooth",
+      "pulseaudio",
+      "battery"
+    ],
+    "battery": {
+      "format": "{icon} {capacity}%",
+      "format-charging": "󱐋 {capacity}%",
+      "format-plugged": "󰚥 {capacity}%",
+      "format-icons": [ " ", " ", " ", " ", " " ],
+      "states": { "critical": 15, "warning": 30 },
+      "tooltip-format": "{timeTo}"
+    },
+    "bluetooth": {
+      // "on-click": "dmenu-bluetooth",
+      "format": ""
+    },
+    "clock": {
+      "format": "󰥔   {:%a %H:%M}",
+      "interval": 1,
+      "tooltip-format": "{:%d %B %Y}",
+      // "tooltip-format": "<tt><big>{calendar}</big></tt>",
+      "calendar": {
+        "mode": "month",
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "on-click-right": "mode",
+        "format": {
+          "months": "<span color='#d3c6aa'><b>{}</b></span>",
+          "days": "<span color='#e67e80'>{}</span>",
+          "weeks": "<span color='#a7c080'><b>W{}</b></span>",
+          "weekdays": "<span color='#7fbbb3'><b>{}</b></span>",
+          "today": "<span color='#dbbc7f'><b><u>{}</u></b></span>"
+         }
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-click-forward": "tz_up",
+        "on-click-backward": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+      }
+    },
+    "cpu": {
+      "format": "{usage}% "
+    },
+    "custom/icon": {
+      "format": " ",
+    },
+    "custom/spotify": {
+      "exec": "$HOME/.config/waybar/scripts/spotify.sh 2> /dev/null",
+      "exec-if": "pgrep spotify",
+      "format": "{icon} {}",
+      "format-icons": {
+        "default": "",
+        "paused": " ",
+        "playing": "  "
+      },
+      "interval": 1,
+      "on-click": "playerctl -p spotify play-pause",
+      "on-click-middle": "playerctl -p spotify previous",
+      "on-click-right": "playerctl -p spotify next",
+      "return-type": "json"
+    },
+    "custom/swaync": {
+      "exec": "$HOME/.config/waybar/scripts/swaync.sh 2> /dev/null",
+      "format": "{icon}",
+      "format-icons": {
+        "dnd": "  ",
+        "new": " ",
+        "none": " "
+      },
+      "interval": 1,
+      "on-click": "swaync-client -t",
+      "on-click-right": "swaync-client -d",
+      "return-type": "json",
+      "tooltip": false
+    },
+    "hyprland/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+        "urgent": " ",
+        "active": " ",
+        "default": " ",
+        "sort-by-number": true
+      },
+      "persistent-workspaces": {
+        "1": [ ],
+        "2": [ ],
+        "3": [ ],
+        "4": [ ],
+        "5": [ ]
+      },
+    },
+    "hyprland/window": {
+      "format": "    {}",
+      "separate-outputs": true,
+      "max-length": 1000
+    },
+    "memory": {
+      "format": "{}% "
+    },
+    "network": {
+      "format-disconnected": "󰖪 ",
+      "format-ethernet": "󰈀 ",
+      "format-wifi": "󰖩   {signalStrength}",
+      "on-click": "$TERMINAL impala",
+      "tooltip-format-wifi": "󰖩   {essid} ",
+      "tooltip-format-ethernet": "󰈀   {essid}",
+      "tooltip-format-disconnected": "󰖪   Disconnected"
+    },
+    "position": "top",
+    "pulseaudio": {
+      "format": "{icon} {volume} ",
+      "format-icons": { "default": ["󰕿 ", "󰖀 ", "󰕾 "] },
+      "format-muted": " ",
+      "format-bluetooth": "󰂰 {volume} ",
+      "format-bluetooth-muted": "󰂲 {icon}",
+      "on-click": "$TERMINAL wiremix",
+      "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+      "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
+      "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
+      "tooltip-format": "{desc}"
+    },
+    "tray": {
+      "icon-size": 14,
+      "spacing": 10
+    },
+    "backlight": {
+      "format": "{icon} {percent}",
+      "format-icons": ["󰃞", "󰃟", "󰃠"],
+      "on-scroll-up": "brightnessctl set +5%",
+      "on-scroll-down": "brightnessctl set 5%-"
+    },
+  }
+]
+
