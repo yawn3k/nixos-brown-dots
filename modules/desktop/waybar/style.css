@@ -1,0 +1,247 @@
+@define-color color-text #ddc7a1;
+@define-color color-border #332b24;
+@define-color color-background #665747;
+
+
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+}
+
+
+
+window#waybar {
+  background: transparent;
+  color: @color-text;
+}
+
+
+
+#waybar > box {
+  margin: 6px 6px 0px 6px;
+}
+
+
+
+.modules-left > widget,
+.modules-center > widget,
+.modules-right > widget {
+  padding: 0 4px;
+}
+
+
+
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+  background: alpha(@color-background, 0.85);
+  border-radius: 8px;
+  padding: 3px 8px;
+  margin: 0 4px;
+  border: 1px solid alpha(@color-border, 0.6);
+  color: @color-text;
+}
+
+
+
+.modules-center > widget > * {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+
+#workspaces {
+  padding: 0 2px;
+}
+
+#workspaces button {
+  background: transparent;
+  color: @color-text;
+  padding: 3px 2px;
+  margin: 0 2px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
+#workspaces button:hover {
+  background: alpha(@color-background, 0.35);
+}
+
+#workspaces button.active {
+  /* background: @color-background; */
+  color: @color-text;
+  border-color: alpha(@color-text, 0);
+  font-weight: 600;
+}
+
+#workspaces button.urgent {
+  background: @color-background;
+  color: @color-text;
+}
+
+
+
+#window {
+  font-weight: 600;
+  color: @color-text;
+}
+
+#window.empty {
+  color: alpha(@color-text, 0.45);
+}
+
+
+
+#mode {
+  background: @color-background;
+  color: @color-text;
+  border-radius: 8px;
+  border: 1px solid alpha(@color-border, 0.4);
+  padding: 3px 10px;
+}
+
+
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#custom-spotify,
+#tray,
+#mode {
+  margin: 0 3px;
+}
+
+
+
+#clock {
+  color: @color-text;
+  font-weight: 500;
+}
+
+
+
+#battery {
+  color: @color-text;
+}
+
+#battery.charging {
+  color: @color-background;
+}
+
+@keyframes battery-warn {
+  0% {
+    background-color: alpha(@color-background, 0.35);
+    color: @color-text;
+  }
+  100% {
+    background-color: alpha(@color-background, 0.55);
+    color: @color-text;
+  }
+}
+
+#battery.warning:not(.charging) {
+  animation: battery-warn 0.7s ease-in-out infinite alternate;
+  border-radius: 8px;
+}
+
+
+
+#cpu,
+#memory {
+  color: @color-text;
+}
+
+#cpu {
+  border-right: 1px solid alpha(@color-border, 0.6);
+  padding-right: 7px;
+}
+
+#memory {
+  padding-left: 7px;
+}
+
+
+
+#network {
+  color: @color-text;
+}
+
+#network.disconnected {
+  background: @color-background;
+  color: @color-text;
+  border-radius: 8px;
+}
+
+
+
+#pulseaudio {
+  color: @color-text;
+}
+
+#pulseaudio.muted {
+  color: alpha(@color-text, 0.5);
+  background: alpha(@color-background, 0.6);
+}
+
+
+
+#custom-spotify {
+  color: @color-text;
+}
+
+#custom-spotify.playing {
+  color: @color5;
+}
+
+
+
+#tray {
+  padding-right: 6px;
+}
+
+#tray > .passive {
+  opacity: 0.4;
+}
+
+#tray > .needs-attention {
+  background: @color-background;
+  color: @color-text;
+  border-radius: 6px;
+}
+
+
+
+tooltip {
+  background: alpha(@color-background, 0.95);
+  border-radius: 6px;
+  padding: 4px 8px;
+  border: 1px solid alpha(@color-border, 0.8);
+}
+
+tooltip label {
+  color: @color-text;
+}
+
+#battery,
+#network,
+#pulseaudio,
+#custom-swaync,
+#tray {
+  min-width: 22px;
+}
+
+#battery,
+#network,
+#pulseaudio,
+#custom-swaync {
+  padding-left: 8px;
+  padding-right: 4px;
+}
